@@ -1,19 +1,14 @@
 :root {
-    --bg-dark: #1A2F3A;
+    --bg-dark: #0d5c86;
 
-    --logo-height: 500px;
+    --logo-height: 100px;
     --header-height: 100px;
-    --aside-widht: 225px;
-    --footer-height: 40px;
-
-    --shadow:
-        0 2px 23px 0 rgba(0, 0, 0, 0.1),
-        0 2px 49px 0 rgba(0, 0, 0, 0.06),
+    --aside-widht: 155px;
+    --footer-height: 40px;       
 }
 
 * {
-    box-sizing: border-box;
-    
+    box-sizing: border-box;    
 }
 
 /* Layout em grid*/
@@ -27,12 +22,11 @@
         "logo header"
         "menu content"
         "menu footer";
-
     height: 100vh;
     background-color: #f5f5f5;
 }
 
-aside.log {
+aside.logo {
     grid-area: logo;
 }
 

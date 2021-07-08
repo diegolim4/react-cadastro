@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Main from '../template/Main'
-import { Component } from 'react'
 
 const headerProps = {
     icon: 'users',
@@ -11,9 +10,9 @@ const headerProps = {
 export default class UserCrud extends Component {
     render() {
         return (
-            <Main {...headerProps}
+            <Main {...headerProps}>
                 Cadastro de Usuário 
-            ></Main>
+            </Main>
         )
     }
 }

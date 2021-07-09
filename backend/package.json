@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3001"
+  },
+  "author": "Diego Lima",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.16.3",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.5"
+  }
+}

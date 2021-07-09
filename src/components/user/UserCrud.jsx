@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import Main from '../template/Main'
-
+import axios from 'axios'
 
 const headerProps = {
     icon: 'users',
@@ -9,6 +9,7 @@ const headerProps = {
 }
 
 
+const baseUrl = 'http://localhost:3001/users'
 const initialState = {
     user: { name: '', email: '' },
     list: []
@@ -16,7 +17,7 @@ const initialState = {
 
 export default class UserCrud extends Component {
 
-    state = { ...initialState }
+    state = { ...initialState }  
 
     clear() {
         this.state({ user: initialState.user })
@@ -25,8 +26,8 @@ export default class UserCrud extends Component {
     save() {
         const user = this.state.user
         const method = user.id ? 'put' : 'post'
-        
-        axios[method](user).then(resp => {
+        const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
+        axios[method](url, user).then(resp => {
             const list = this.getUpdateList(resp.data)
             this.setState({ user: initialState.user, list })
         })
@@ -56,15 +57,15 @@ export default class UserCrud extends Component {
                                 value={this.state.user.name}
                                 onChange={e => this.updateFiel(e)}
                                 placeholder="Digite o nome" />
-
                         </div>
                     </div>
+
                     <div className="col-12 col-md-6">
                         <div className="form-group">
-                            <label>Email</label>
+                            <label>E-mail</label>
                             <input type="text" className="form-control"
                                 name="email"
-                                value={this.state.user.name}
+                                value={this.state.user.email}
                                 onChange={e => this.updateFiel(e)}
                                 placeholder="Digite o email" />
                         </div>
@@ -75,7 +76,7 @@ export default class UserCrud extends Component {
                     <div className="col-12 d-flex justify-content-end">
                         <button className="btn btn-primary" onClick={e => this.save(e)}>
                             Salvar</button>
-                        
+
                         <button className="btn btn-danger" onClick={e => this.clear(e)}>
                             Cancelar</button>
                     </div>
